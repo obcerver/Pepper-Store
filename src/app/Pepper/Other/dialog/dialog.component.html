@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Delete?</h2>
+<hr>
+<mat-dialog-content>Are you sure you want to delete this?</mat-dialog-content>
+<mat-dialog-actions>
+    <div class="confirmBtn">
+        <div class="cancelBtn"><button mat-button mat-dialog-close [mat-dialog-close]="false" class="btn btn-outline-success">Cancel</button></div>
+        <div class="deleteBtn"><button mat-button mat-dialog-close [mat-dialog-close]="true" class="btn btn-danger">Delete</button></div>
+    </div>
+</mat-dialog-actions>

@@ -1,0 +1,23 @@
+<div class="item-bg">
+    <svg viewBox="0 0 110 110" width="100vw" height="92vh"xmlns="http://www.w3.org/2000/svg">
+        <path fill="#F0A24E" d="M46.1,-78.1C60.2,-71.6,72.5,-60.3,80.2,-46.5C87.9,-32.7,90.9,-16.3,91,0C91,16.4,88.1,32.8,80.5,46.6C72.8,60.4,60.3,71.6,46.1,79.8C31.8,87.9,15.9,93.2,0.1,92.9C-15.6,92.7,-31.3,87,-44.3,78.1C-57.2,69.2,-67.5,57.1,-76.2,43.5C-84.9,30,-92,15,-93,-0.6C-94,-16.1,-88.9,-32.2,-80.2,-45.8C-71.5,-59.3,-59.2,-70.3,-45.2,-76.9C-31.3,-83.5,-15.6,-85.6,0.2,-85.9C16,-86.2,31.9,-84.5,46.1,-78.1Z" transform="translate(-50 -20)" />
+        <path fill="orangered" d="M46.1,-78.1C60.2,-71.6,72.5,-60.3,80.2,-46.5C87.9,-32.7,90.9,-16.3,91,0C91,16.4,88.1,32.8,80.5,46.6C72.8,60.4,60.3,71.6,46.1,79.8C31.8,87.9,15.9,93.2,0.1,92.9C-15.6,92.7,-31.3,87,-44.3,78.1C-57.2,69.2,-67.5,57.1,-76.2,43.5C-84.9,30,-92,15,-93,-0.6C-94,-16.1,-88.9,-32.2,-80.2,-45.8C-71.5,-59.3,-59.2,-70.3,-45.2,-76.9C-31.3,-83.5,-15.6,-85.6,0.2,-85.9C16,-86.2,31.9,-84.5,46.1,-78.1Z" transform="translate(150 120)"/>
+    </svg>
+    
+    <div class="box">
+        <form>
+            <h2>Admin's Log In</h2>
+        
+            <mat-form-field appearance="outline" color="warn">
+                <mat-label>Enter admin's password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" #adminPassword>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <br><br>
+        
+            <button mat-raised-button type="button" (click)="checkAdmin(adminPassword.value)" color="warn">Log In</button>
+        </form>
+    </div>
+</div>

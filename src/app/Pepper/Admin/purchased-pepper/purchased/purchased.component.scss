@@ -1,0 +1,50 @@
+.item-bg{
+    background-image: url("https://previews.123rf.com/images/nawadoln/nawadoln1709/nawadoln170900009/85403760-malaysian-ringgit-currency-on-pattern-background-symbol-rm-currency-code-myr.jpg");
+    background-attachment: fixed;
+    height: auto;
+}
+
+h1{
+    color: #FFA900;
+    font-size: 100px;
+    font-family: 'Metal Mania', cursive;
+    text-align: center;
+    text-shadow: 7px 7px 0px #262626;
+}
+
+h2{
+    margin-top: 70px;
+    color: orangered;
+    font-size: 60px;
+    font-family: 'Metal Mania', cursive;
+    text-align: center;
+    text-shadow: 3px 3px 0px #262626;
+}
+
+table{
+    width: 90vw;
+    margin: auto;
+
+    border-collapse: collapse;
+    border-radius: 15px;
+    overflow: hidden;
+
+    td, th{
+        padding: 20px;
+        background-color: gray;
+        opacity: 0.85;
+        color: whitesmoke;
+        margin-top: 10px;
+    }
+
+    thead{
+        th{
+            background-color: black;
+        }
+    }
+}
+
+.dropdown{
+    margin: 10px;
+    left: 4%;
+}

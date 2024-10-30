@@ -1,0 +1,237 @@
+ul{
+  text-align:center;
+}
+
+.item-bg{
+  background-image: url("https://cdn.pixabay.com/photo/2021/05/04/12/49/anime-6228610_1280.jpg");
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+
+.card{
+  margin: 40px;
+  border-radius: 15px;
+  background-color: black ;
+  padding-top: 40px;
+
+  width: 250px;
+  height: auto;
+
+  button{
+    margin-bottom: 10px;
+  }
+  
+  img{
+    height: 170px;
+    width: 185px;
+    border-radius: 15px;
+    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+  .Name{
+      h5{
+        color: white;
+        font-size: 25px;
+        font-family: 'Metal Mania', cursive;
+        padding: 10px;
+      }
+  }
+
+
+  p{
+    color: gray;
+  }
+}
+
+.card:hover{
+background-color:#171717;
+box-shadow: orangered 0px 5px 15px;
+}
+
+h2{
+color: orangered;
+margin-top: 20px;
+}
+
+p{
+color: orangered;
+}
+
+ul{
+text-align:center;
+}
+
+.cartBtn{
+  font-family: 'Metal Mania', cursive;
+  color: black;
+}
+
+.sidenav{
+  width: 18vw;
+  background-color: white;
+  
+  p{
+    color: white;   
+  }
+}
+
+.accordion{
+
+  background-color: white;
+  width: 16vw;
+  margin: auto;
+  margin-top: 3vh;
+  border-radius: 15px;
+
+  .accordion-item {
+    margin: 0%;
+    
+    li{
+      text-align: left;
+    }
+  }
+}
+
+.radio-item{
+  input[type='radio']{
+      width: 30px;
+      height: 30px;
+      -webkit-appearance: none;
+      border-radius: 50%;
+      margin: 5px;
+  }
+
+  .Choco{
+      background-color:#32272B;
+      cursor: pointer;
+  }
+
+  .Lime{
+      background-color: #BFFF00;
+      cursor: pointer;
+  }
+
+  .Orange{
+      background-color:orange;
+      cursor: pointer;
+  }
+
+  .Red{
+      background-color: red;
+      cursor: pointer;
+  }
+
+  .Yellow{
+      background-color:yellow;
+      cursor: pointer;
+  }
+
+  input[type='radio']:checked {
+      -webkit-appearance: none;
+      border-radius: 50%;
+      border: gray solid 3px;
+  }
+}
+
+.star {
+  font-size: 1.5rem;
+  color: gray;
+  cursor: pointer;
+}
+
+.filled {
+color: orangered;
+cursor: pointer;
+} 
+
+.accordion-body{
+  a{
+    text-decoration: none;
+    background-color: transparent;
+  }
+}
+
+a{
+  cursor: pointer;
+} 
+
+.clear{
+  margin: 20px;
+}
+
+.navbar-form{
+  width: 16vw;
+  margin: auto;
+  margin-top: 17vh;
+
+  input[type="search"] {
+    
+    width: 245px;
+    padding-right: 50px;
+  }
+
+
+  button{
+      margin-left: -50px;
+  } 
+}
+
+.filterDisp{
+
+  h1{
+    font-family: 'Metal Mania', cursive;
+    font-size: 30px;
+    margin-left: 20px;
+    text-align: left;
+  }
+
+  h2{
+    font-family: 'Metal Mania', cursive;
+    font-size: 27x;
+    margin-left: 20px;
+    text-align: left;
+  }
+
+}
+
+.none{
+  h1{
+    color: white;
+    padding-top: 5vh;
+    text-align: center;
+  }
+
+  h2{
+    color: white;
+    padding-bottom: 3vh;
+    text-align: center;
+
+    i{
+      padding-bottom: 30vh;
+    }
+  }
+}
+
+.blocked{
+  h1{
+    color: white;
+    padding-top: 20vh;
+    padding-bottom: 80vh;
+    text-align: center;
+    font-family: 'Metal Mania', cursive;
+    font-size: 90px;
+  }
+}
+
+.dropdown {
+  margin: 10px;
+  position: absolute;
+  right: 12.5%;
+
+  li{
+    text-align: left;
+  }
+}

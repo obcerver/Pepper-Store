@@ -1,0 +1,116 @@
+.item-bg{
+  background-image: url("/assets/bg.png");
+  background-size: 100% 120%;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+h2{
+    margin-left: 70px;
+    font-family: 'Metal Mania', cursive;
+    padding-top: 20px;
+    font-size: 50px;
+}
+
+table{
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    border-collapse: collapse;
+    border-radius: 15px;
+    overflow: hidden;
+
+    background-color: black;
+
+    th,td {
+        padding-left: 40px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        text-align: left;
+        color: white;
+    }
+}
+
+.id{
+  width: 130px;
+}
+  
+.name{
+  width: 330px;
+}
+  
+.qty{
+  width: 340px;
+}
+  
+.price{
+  width: 330px;
+}
+
+.alert{
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+.head{
+    color: white;
+}
+
+.pepperItem{
+  th, td {
+    background-color: lightgrey;
+    padding-left: 40px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: left;
+    color: black;
+   
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+  }
+  
+  .id{
+    width: 160px;
+  }
+  
+  .name{
+    width: 460px;
+  }
+  
+  .qty{
+    width: 460px;
+  }
+  
+  .price{
+    width: 350px;
+  }
+
+  .delete{
+    width: 80px;
+    padding-left: 0%;
+  }
+  
+  img{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+  }
+  
+}
+
+.delete {
+  background-color: transparent; 
+  border-color: transparent;
+}
+
+.payment{
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  text-align: center;
+}

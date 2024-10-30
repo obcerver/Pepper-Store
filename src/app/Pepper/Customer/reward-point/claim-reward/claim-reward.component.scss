@@ -1,0 +1,47 @@
+.bg {
+    background: rgb(108,44,180);
+    background: linear-gradient(90deg, rgba(108,44,180,1) 0%, rgba(156,39,176,1) 100%) fixed;
+
+    min-height: 150%;
+
+    h1{
+        text-align: center;
+        color: white;
+        padding-top: 40px;
+
+        font-size: 45px;
+        font-family: 'Metal Mania', cursive;
+    }
+
+    a{  
+        color: #ffd700;
+    }
+}
+
+.example-card {
+    margin: 30px;
+    width: 19vw;
+    float: left;
+    text-align: center;
+
+    .content{
+        height: 26vh;
+    }
+
+    img {
+        height: 150px;
+        width: 150px;
+    }
+}
+.example-card:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+button {
+    transition: background-color 0.5s, color 0.5s;
+}
+
+button:hover {
+    background-color: white;
+    color: #6c2cb4;
+}

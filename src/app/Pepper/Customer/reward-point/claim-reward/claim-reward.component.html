@@ -1,0 +1,36 @@
+<div class="bg">
+    <h1>Hey <a>{{user.userName}}</a>, Choose Your Reward!</h1>
+    
+    <div class="center" *ngFor="let item of rewardArray; let i = index">
+        <mat-card class="example-card">
+            <mat-card-title>{{ item.rewardName }}</mat-card-title>
+    
+            <mat-divider inset></mat-divider>
+    
+            <mat-card-content class="content">
+                <br>
+                <img [src]="convertBase64(i)" class="card-img-top center" alt="...">
+                <br><br>
+                <p>Coupon's Price: {{item.rewardPrice}}</p>
+            </mat-card-content>
+    
+            <mat-divider inset></mat-divider>
+    
+            <mat-card-actions>
+                <br>
+    
+                <div *ngIf="user.coupon >= item.rewardPrice; else disable">
+                    <button mat-raised-button color="primary" class="reward" (click)="claimReward(item)">Get Reward</button>
+                </div>
+    
+                <ng-template #disable>
+                    <button mat-raised-button color="primary" class="reward" disabled>Get Reward</button>
+                </ng-template>
+                
+            </mat-card-actions>
+    
+            <mat-card-footer>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+</div>

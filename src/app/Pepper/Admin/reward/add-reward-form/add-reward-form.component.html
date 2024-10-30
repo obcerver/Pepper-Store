@@ -1,0 +1,60 @@
+<body class="bg">
+    <br><br>
+
+    <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <button mat-raised-button (click)="showAdd()" color="primary"><i class="fas fa-plus"></i>  Add Reward</button>
+            <button mat-raised-button (click)="showEdit()"><i class=" fas fa-edit"></i> Update Reward</button>
+          </div>
+        </div>
+    </div>
+
+    
+        <br><br>
+        <div class="container-form">
+            <h1>Add Reward</h1>
+            <form [formGroup]="addRewardForm">
+
+                <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+                    <img [src]="imageURL" [alt]="addRewardForm.value.name">
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="rewardId">ID </label>
+                    <input formControlName='rewardId' type="text" class="form-control" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="rewardName">Name </label>
+                    <input [class.is-invalid]="addRewardForm.get('rewardName').invalid && addRewardForm.get('rewardName').touched" 
+                    formControlName='rewardName' type="text" class="form-control" placeholder="Enter reward's Name...">
+                    <small [class.d-none]="addRewardForm.get('rewardName').valid || addRewardForm.get('rewardName').untouched" 
+                    class="text-danger">Reward Name is Required</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="rewardPic">Picture </label>
+                    <input type="file" class="form-control" accept="image/*" (change)="selectImg($event)">
+                </div>
+
+                <div class="number">
+                    <div class="form-group">
+                        <label for="rewardName">Coupon's Price </label>
+                        <input [class.is-invalid]="addRewardForm.get('rewardPrice').invalid && addRewardForm.get('rewardPrice').touched" 
+                        formControlName='rewardPrice' type="number" class="form-control" placeholder="Coupon's Price">
+                        <small [class.d-none]="addRewardForm.get('rewardPrice').valid || addRewardForm.get('rewardPrice').untouched" 
+                        class="text-danger">Reward Coupon's Price is Required</small>
+                    </div>
+                </div>
+                <button mat-raised-button (click)="formSubmit()" type="submit" [disabled]="addRewardForm.invalid" color="primary">Add reward</button>
+            </form>
+
+
+        </div>
+    
+    <br><br><br><br>
+    
+</body>

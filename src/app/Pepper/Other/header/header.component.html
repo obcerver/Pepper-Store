@@ -1,0 +1,69 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+
+  <a class="navbar-brand" style="font-size: 30px;" routerLink="/home">
+    <span class="home"> 
+      <i class="fas fa-fire"></i>
+      Hottest Pepper
+    </span>
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto">
+      <div *ngIf="userNav === 1" class="navbar-nav ms-auto">
+
+        <li class="nav-item active">
+          <a class="nav-link cool-link" routerLink="/addPepper">
+            <i class="bi bi-pencil-square"></i> Pepper Editor
+          </a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link cool-link" routerLink="/addReward">
+            <i class="bi bi-gift-fill"></i> Reward Editor
+          </a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link cool-link" routerLink="/purchasedList">
+            <i class="bi bi-receipt-cutoff"></i>  Purchased Pepper
+          </a>
+        </li>
+
+        <!-- <div class="reset" (click)="reset()">
+          <button id="btn">
+            <i class="fas fa-power-off"></i>
+            <span>&nbsp;&nbsp;Reset System</span>
+          </button>
+        </div> -->
+
+      </div>
+
+      <div *ngIf="userNav === 2" class="navbar-nav ms-auto">
+
+        <li class="nav-item active">
+          <a class="nav-link cool-link" routerLink="/userLogin">
+            <i class="bi bi-person-bounding-box"></i>&nbsp; Users
+          </a>
+        </li>
+
+
+        <li class="nav-item active">
+          <a class="nav-link cool-link" routerLink="/pepperList">
+            <i class="fas fa-pepper-hot"></i>&nbsp; Peppers
+          </a>
+        </li>
+      
+        <li class="nav-item">
+          <a class="nav-link cool-link" routerLink="/cart">
+            <span matBadge="{{cartItem.length}}" matBadgeOverlap="false"><i class="bi bi-cart4"></i>&nbsp;Cart</span>&nbsp;
+          </a>
+        </li>
+      </div>
+    </ul>
+    
+  </div>
+</nav>

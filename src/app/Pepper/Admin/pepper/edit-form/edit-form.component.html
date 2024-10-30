@@ -1,0 +1,75 @@
+<body class="bg">
+
+    <br><br>
+
+    <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <button (click)="showAdd()" type="button" class="btn btn-secondary"><i class="fas fa-plus"></i>  Add Pepper</button>
+            <button (click)="showEdit()" type="button" class="btn btn-warning"><i class=" fas fa-edit"></i> Update Pepper</button>
+          </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div *ngIf="pepperArray.length === 0; else showList">
+        <p>No Pepper In The System</p>
+    </div>
+
+    <ng-template #showList>
+
+        <table>
+            <tr>
+                <th scope="col">Picture</th>
+                <th scope="col">Pepper Name</th>
+                <th scope="col">Positions</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Status</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">Error</th>
+            </tr>
+        
+            <tr *ngFor ="let item of pepperArray; let i = index">
+                <td>
+                    <img [src]="convertBase64(i)" class="card-img-top center" alt="...">
+                    <br><br>
+                </td>
+
+                <td>{{item.pepperName}}</td>
+                <td>{{item.pepperPositions}}</td>
+                <td>{{item.pepperQty}}</td>
+                <td>{{getPepperStatus(item.pepperId)}}</td>
+
+                <td>
+                    <button (click)="openEditForm(item, i)" type="button" class="btn btn-success" >
+                        <i class="fas fa-edit"></i> Update
+                    </button>
+                </td>
+
+                <td>
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <div class="notify" *ngIf="item.pepperPositions > pepperArray.length">
+                                <i class="bi bi-exclamation-circle" 
+                                matTooltip="Error: Pepper Positions exceed Number of Pepper"
+                                matTooltipClass="example-tooltip-red"
+                                matTooltipPosition="above"></i>
+                            </div>
+                        </li>
+                        <li class="list-inline-item">              
+                            <div class="notify" *ngIf="checkOverlap(item)">
+                                <i class="bi bi-back" 
+                                matTooltip="Error: Pepper Positions overlap with other pepper"
+                                matTooltipClass="example-tooltip-red"
+                                matTooltipPosition="above"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <br><br><br><br>
+    </ng-template>
+</body>

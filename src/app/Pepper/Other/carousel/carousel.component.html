@@ -1,0 +1,104 @@
+<!-- <div *ngIf="show">
+  <div class="container-fluid item-bg">
+      <div class="row">
+          <div class="">
+              <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  </div>
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="https://kj1bcdn.b-cdn.net/media/47934/thumbnail-12-hottest-chilli-pepper.jpg" class="d-block" alt="...">
+                      <div class="carousel-caption d-none d-md-block"></div>
+                    </div>
+                    <div class="carousel-item center-text">
+                      <h1>Come Get Your Pepper</h1>
+                      <img src="https://cdn.pixabay.com/photo/2021/05/04/12/49/anime-6228610_1280.jpg" class="d-block center-text" alt="...">
+                      <div class="carousel-caption d-none d-md-block"></div>
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+            </div>
+        </div>
+
+        <br><br><br><br><br>
+    </div>
+
+    
+
+  <div class="item-bg">
+    <div class="features"><h1>Features</h1></div>
+    <div style="float: right;margin-right: 180px;">
+      <button (click)="goToPepperList()" type="button" class="btn btn-warning">Explore All</button>
+    </div>
+    <br><br><br><br>
+    <ul class="list-inline">
+      <li class="list-inline-item"  *ngFor="let pepperItem of peppers | slice:0:3; let i = index">
+        <h2>Rank <sup>#</sup>{{pepperItem.id}}</h2>
+        <h3>Hottest Pepper</h3>
+        <div class="medal{{i}}">
+          <i class="fas fa-medal"></i>
+        </div>
+        <div class="card border-danger mb-3">
+          <img src="{{pepperItem.pic}}" class="card-img-top center" alt="...">
+          <div class="card-body ">
+            <div class="Name">
+              <h5 class="card-title">{{pepperItem.name}}</h5>
+            </div>
+            <p class="card-text">{{pepperItem.desc}}</p>
+            <div class="price">
+              <p class="card-text">Price: {{pepperItem.price | currency:'MYR '}}</p>
+            </div>
+          </div>
+      </div>
+    
+      </li>
+    </ul>
+    <br><br><br><br>
+  </div>
+</div> -->
+
+<div class="item-bg">
+  <svg viewBox="0 0 110 110" width="100vw" height="92vh"xmlns="http://www.w3.org/2000/svg">
+    <path fill="#F0A24E" d="M46.1,-78.1C60.2,-71.6,72.5,-60.3,80.2,-46.5C87.9,-32.7,90.9,-16.3,91,0C91,16.4,88.1,32.8,80.5,46.6C72.8,60.4,60.3,71.6,46.1,79.8C31.8,87.9,15.9,93.2,0.1,92.9C-15.6,92.7,-31.3,87,-44.3,78.1C-57.2,69.2,-67.5,57.1,-76.2,43.5C-84.9,30,-92,15,-93,-0.6C-94,-16.1,-88.9,-32.2,-80.2,-45.8C-71.5,-59.3,-59.2,-70.3,-45.2,-76.9C-31.3,-83.5,-15.6,-85.6,0.2,-85.9C16,-86.2,31.9,-84.5,46.1,-78.1Z" transform="translate(-50 -20)" />
+    <path fill="orangered" d="M46.1,-78.1C60.2,-71.6,72.5,-60.3,80.2,-46.5C87.9,-32.7,90.9,-16.3,91,0C91,16.4,88.1,32.8,80.5,46.6C72.8,60.4,60.3,71.6,46.1,79.8C31.8,87.9,15.9,93.2,0.1,92.9C-15.6,92.7,-31.3,87,-44.3,78.1C-57.2,69.2,-67.5,57.1,-76.2,43.5C-84.9,30,-92,15,-93,-0.6C-94,-16.1,-88.9,-32.2,-80.2,-45.8C-71.5,-59.3,-59.2,-70.3,-45.2,-76.9C-31.3,-83.5,-15.6,-85.6,0.2,-85.9C16,-86.2,31.9,-84.5,46.1,-78.1Z" transform="translate(150 120)"/>
+  </svg>
+
+  <mat-card class="example-card">
+    <mat-card-content>
+
+      <div class="flex-container">
+
+        <div class="flex-child">
+          <button (click)="adminPage()">
+            <i class="fas fa-user-cog"></i>
+            <br>
+            Admin
+          </button>
+        </div>
+        
+        <div class="vl"></div>
+
+        <div class="flex-child">
+          <button (click)="custPage()">
+            <i class="fas fa-user"></i>
+            <br>
+            Customer
+          </button>
+        </div>
+        
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+  
+</div>

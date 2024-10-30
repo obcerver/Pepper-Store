@@ -1,0 +1,66 @@
+<body class="bg">
+
+    <br><br>
+
+    <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <button mat-raised-button (click)="showAdd()"><i class="fas fa-plus"></i>  Add Reward</button>
+            <button mat-raised-button (click)="showEdit()" color="primary"><i class=" fas fa-edit"></i> Update Reward</button>
+          </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div *ngIf="rewardArray.length === 0; else showList">
+        <p>No Reward In The System</p>
+    </div>
+
+    <ng-template #showList>
+        <table>
+            <tr>
+                <th>Picture</th>
+                <th>Name</th>
+                <th>Coupon's Price</th>
+                <th>&nbsp;</th>
+            </tr>
+        
+            <tr *ngFor ="let item of rewardArray; let i = index">
+                <td>
+                    <img [src]="convertBase64(i)" class="card-img-top center" alt="...">
+                    <br><br>
+                </td>
+    
+                <td>
+                    {{item.rewardName}}
+                </td>
+    
+                <td>
+                    {{item.rewardPrice}}
+                </td>
+    
+                <td>
+                    <button #tooltip="matTooltip"
+                            matTooltip="Edit"
+                            matTooltipPosition="above" 
+                            type="button" 
+                            class="btn btn-success edit"
+                            (click)="openEditForm(item, i)">
+                        <i class="fas fa-edit"></i>
+                    </button>
+    
+                    <button  #tooltip="matTooltip"
+                            matTooltip="Delete"
+                            matTooltipPosition="above"
+                            class="btn btn-danger delete"
+                            (click)="removeReward(item)">
+                        <i class="bi bi-trash2-fill"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    
+        <br><br><br><br>
+    </ng-template>
+</body>

@@ -1,0 +1,80 @@
+body{
+    background: rgb(241,255,0);
+    background: linear-gradient(90deg, rgba(241,255,0,1) 0%, rgba(253,187,45,1) 100%);
+    background-size: 100%;
+    height: auto;
+}
+
+p {
+    margin-top: 70px;
+    font-size: 60px;
+    font-family: 'Metal Mania', cursive;
+    text-align: center;
+    text-shadow: 3px 3px 0px #262626;
+    color: #6c2cb4;
+}
+
+table{
+
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+    border-radius: 15px;
+    overflow: hidden;
+
+    th{
+        background-color: #6c2cb4;
+        color: white;
+        padding: 20px;
+        padding-left: 50px;
+        font-size: 20px;
+    }
+
+    td{
+        background-color: white;
+        color: black;
+        padding-left: 50px;
+        font-size: 18px;
+    }
+
+    img {
+        height: 80px;
+        width: 80px;
+    }
+
+    button{
+        font-size: 18px;
+    }
+
+    .delete:hover {
+        background-color: white;
+        color: red;
+    }
+
+    .edit:hover {
+        background-color: white;
+        color: green;
+    }
+}
+
+button{
+    margin: 10px;
+    font-family: 'Metal Mania', cursive;
+    font-size: 25px;
+    text-align: center;
+
+    padding-left: 20px;
+    padding-right: 20px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    transition: background-color 0.5s, color 0.5s;
+}
+
+button:hover {
+    background-color: purple;
+    color: white;
+}

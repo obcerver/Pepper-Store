@@ -1,0 +1,59 @@
+<div class="item-bg">
+    <br><br>
+    <h1>Purchased Pepper</h1>
+    <br><br>
+
+
+    <div *ngIf="purchasedPepper.length === 0; else purchasedTable">
+        <h2>No Pepper Have been purchased</h2>
+    </div>
+
+    <ng-template #purchasedTable>
+        <div class="dropdown">
+            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
+            {{textDrop}}
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" (click)="sortNumber('purchasedId');changeText('Id: Low - High')" type="button">Id: Low - High</a></li>
+            <li><a class="dropdown-item" (click)="reverseSortNumber('purchasedId');changeText('Id: High - Low')" type="button">Id: High - Low</a></li>
+            <li><a class="dropdown-item" (click)="sortNumber('pepperId');changeText('Name: A - Z')" type="button" >Pepper Id: Low - High</a></li>
+            <li><a class="dropdown-item" (click)="reverseSortNumber('pepperId');changeText('Name: Z - A')" type="button">Pepper Id: High - Low</a></li>
+            <li><a class="dropdown-item" (click)="sortNumber('pepperOrder');changeText('Order: Low - High')" type="button">Order: Low - High</a></li>
+            <li><a class="dropdown-item" (click)="reverseSortNumber('pepperOrder');changeText('Order: High - Low')" type="button">Order: High - Low</a></li>
+            <li><a class="dropdown-item" (click)="sortTotalPrice();changeText('Total Price: Low - High')" type="button">Total Price: Low - High</a></li>
+            <li><a class="dropdown-item" (click)="reverseSortTotalPrice();changeText('Total Price: High - Low')" type="button">Total Price: High - Low</a></li>
+            </ul>
+        </div>
+
+        <br>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th scope="col">Purchased Id</th>
+                    <th scope="col">Buyer Id</th>
+                    <th scope="col">Pepper Id</th>
+                    <th scope="col">Pepper Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">&nbsp;</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let item of purchasedPepper; let i=index">
+                    <th scope="row">{{ item.purchasedId }}</th>
+                    <td>{{ item.userId }}</td>
+                    <td>{{ item.pepperId }}</td>
+                    <td>{{ getPepperName(item.pepperId) }}</td>
+                    <td>{{ item.pepperOrder }}</td>
+                    <td>{{ item.pepperPrice*item.pepperOrder | currency:'MYR '}}</td>
+                    <td><button mat-raised-button (click)="openDetails(item.purchasedId, item.pepperId, item.userId)" class="btn btn-outline-warning">Details</button></td>
+                </tr>
+            </tbody>
+
+        </table>
+        <br><br>
+    </ng-template>
+</div>

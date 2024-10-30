@@ -1,0 +1,35 @@
+.item-bg{
+    background: rgb(241,255,0);
+    background: linear-gradient(90deg, rgba(241,255,0,1) 0%, rgba(253,187,45,1) 100%);
+    height: 92.5vh;
+}
+
+.box {
+    border: white 1px solid;
+    width: 20vw;
+    height: 45vh;
+
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: auto;
+
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    transition: box-shadow 1s;
+}
+
+.box:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+form {
+    text-align: center;
+    margin-top: 2vw;
+}
+
+.alert {
+    margin: 1vw;
+}

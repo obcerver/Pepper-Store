@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row1">
+      <div class="col">
+        <app-payment></app-payment>
+      </div>
+    </div>
+  
+    <div class="row2">
+      <div class="col">
+        <table class="bordering">
+          <tr class="lead"><h3>Item</h3></tr><hr>
+          <div *ngFor="let item of cartItem">
+      
+            <tr class="name">
+              <td style="width: 77%;"><p>{{item.pepperName}}</p></td>
+              <td rowspan="2" class="price"><p>{{item.pepperOrder* item.pepperPrice |currency: 'MYR '}}</p></td>
+            </tr>
+            <tr class="qty">
+              <td><p>Quantity: {{item.pepperOrder}}</p></td>
+            </tr>
+
+          </div>
+          <hr>
+          <tr *ngIf="discount === true" class="bottom"><p>Coupon (10% off)&nbsp;&nbsp;{{cartDiscount | currency:'MYR '}}</p></tr>
+          <tr class="bottom"><h3>Total&nbsp;&nbsp;{{cartTotal | currency:'MYR '}}</h3></tr>
+        </table>
+
+        <br>
+        <div *ngIf="coupAvailable === true" class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (change)="useCoupon()">
+          <label class="form-check-label" for="flexCheckDefault">
+            Use My Coupon!
+          </label>
+          <p><i>*One coupon per purchase</i></p>
+        </div>
+
+        <div class="payMethod">
+          <p>Payment Method: <br><strong>{{payMethod}}</strong></p>
+        </div>
+
+        <div class="payment" *ngIf="paySelected === false">
+          <button type="button" class="btn btn-outline-primary btn-lg btn-block" disabled>Pay</button>
+        </div>
+
+        <div class="payment" *ngIf="paySelected === true">
+          <button type="button" (click)="goToSuccessOrder(); removeAllItem()" class="btn btn-outline-primary btn-lg btn-block">Pay</button>
+        </div><br><br>
+
+      </div>
+    </div>
+  </div>

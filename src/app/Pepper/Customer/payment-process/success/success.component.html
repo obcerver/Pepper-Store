@@ -1,0 +1,29 @@
+<div class="card ">
+  <div class="success">
+    <h5 class="card-header">Order Successful!<br><br><br><br></h5>
+  </div>
+    <i class="fas fa-check-circle fa-7x icon-a"></i>
+    <i class="far fa-check-circle fa-7x icon-b"></i>
+    <div class="card-body">
+      <div class="thanks">
+        <h5 class="card-title">Thank You</h5>
+        <p class="card-text">Thank you for choosing us, hope you enjoy your pepper</p>
+        <div class="qr-code">
+          <ngx-qrcode-styling 
+            [template]="'classic'"
+            [width] = "170"
+            [height] = "170"
+            [data] = "this.stampUrl"
+            [image]="'https://image.freepik.com/free-vector/chili-pepper-logo-vector-icon-illustration-design-template_9999-1060.jpg'"
+          ></ngx-qrcode-styling>
+          <p class="card-text">Hey {{custName}}!<br>QR Code = Stamp Card!<br>Why Not?</p>
+        </div>
+      </div>
+      <button type="button" (click)="returnCart()" class="btn btn-primary">Return</button>
+    </div>
+  </div>
+
+  <!-- <div class="timer">
+    <p>{{timeLeft}}s before redirecting...</p>
+  </div> -->
+  

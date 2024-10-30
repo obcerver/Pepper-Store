@@ -1,0 +1,62 @@
+body{
+    background: rgb(241,255,0);
+    background: linear-gradient(90deg, rgba(241,255,0,1) 0%, rgba(253,187,45,1) 100%);
+    background-size: 100%;
+    height: auto;
+}
+
+.container-form{
+    background-color: white;
+    padding: 30px;
+    height: auto;
+    width: 40em;
+    box-shadow: #6c2cb4 0px 22px 70px 4px;
+    border-radius: 15px;
+    margin: auto;
+}
+
+.form-group{
+    padding-bottom: 20px;
+}
+
+td{
+    color: white;
+}
+
+img{
+    width: 200px; 
+    height: 200px; 
+    border-radius: 12px;
+    border: #0E0E0E solid 2px;
+}
+
+button{
+    margin: 10px;
+    font-family: 'Metal Mania', cursive;
+    font-size: 25px;
+    text-align: center;
+
+    padding-left: 20px;
+    padding-right: 20px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    transition: background-color 0.5s, color 0.5s;
+}
+
+button:hover {
+    background-color: purple;
+    color: white;
+}
+
+.number{
+    input{
+        width: 170px;
+    }
+}
+
+h1{
+    font-family: 'Metal Mania', cursive;
+    font-size: 40px;
+}

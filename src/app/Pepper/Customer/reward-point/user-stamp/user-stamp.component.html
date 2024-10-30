@@ -1,0 +1,263 @@
+<div class="item-bg">
+    <br><br>
+    <h1>Hi, {{custSession.userName}}</h1>
+    <br><br><br>
+
+    <mat-card class="card">
+        <mat-card-title>
+            <div class="title">
+                <p>Stamp Card</p>
+            </div>
+        </mat-card-title>
+        <mat-card-subtitle>&nbsp;</mat-card-subtitle>
+
+        <mat-card-content class="content">
+            <div class="stamp-card" id="stampCard">
+
+                <table>
+                    <div *ngIf="custSession.stampCard > 10; else stampLess10">
+                        <tr *ngFor="let stamp of [].constructor(2)">
+                            <td *ngFor="let stamp of [].constructor(5)"><i class="fas fa-pepper-hot"></i></td>
+                        </tr>
+                    </div>
+
+                    <ng-template #stampLess10>
+                        <div *ngIf="custSession.stampCard > 5; else stampLess5">
+                            <tr>
+                                <td *ngFor="let stamp of [].constructor(5)"><i class="fas fa-pepper-hot"></i></td>
+                            </tr>
+                            <tr>
+                                <td *ngFor="let stamp of [].constructor((custSession.stampCard)-5)"><i class="fas fa-pepper-hot"></i></td>
+                            </tr>
+                        </div>
+
+                        <ng-template #stampLess5>
+                            <tr>
+                                <td *ngFor="let stamp of [].constructor(custSession.stampCard)"><i class="fas fa-pepper-hot"></i></td>
+                            </tr>
+                        </ng-template>
+                    </ng-template>
+                </table>
+            </div>
+
+            <p>{{custSession.stampCard}}/10</p>
+
+        </mat-card-content>
+
+        <mat-divider inset></mat-divider>
+
+        <mat-card-actions>
+            <br>
+
+            <div *ngIf="custSession.stampCard >= 10; else btnDisable">
+                <button mat-raised-button color="primary" class="redeem" (click)="redeemCoupon()">Redeem Coupon</button>
+            </div>
+
+            <ng-template #btnDisable>
+                <button mat-raised-button color="primary" disabled>Redeem Coupon</button>
+                <br>
+            </ng-template>
+                   
+            <br>
+        </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="coupon">
+        <mat-card-title>
+            <div class="title">
+                <p>Coupon</p>
+            </div>
+        </mat-card-title>
+        <mat-card-subtitle>&nbsp;</mat-card-subtitle>
+
+        <mat-card-content class="content">
+            
+            <br><br><br><br>
+
+            <a>{{custSession.coupon}}</a>
+
+        </mat-card-content>
+
+        <mat-divider inset></mat-divider>
+
+        <mat-card-actions>
+                   
+            <br>
+
+            <button mat-raised-button color="primary" class="reward" (click)="claimReward()">Use Coupon</button>
+
+        </mat-card-actions>
+
+        <mat-card-footer>
+        </mat-card-footer>
+    </mat-card>
+
+    <mat-card class="purchased">
+        <mat-card-title>
+            <div class="title">
+                <p>Previous Purchase</p>
+            </div>
+        </mat-card-title>
+        <mat-card-subtitle>&nbsp;</mat-card-subtitle>
+
+        <mat-card-content class="content purchaseTable">
+            
+            <table>
+
+                <thead>
+                    <tr>
+                        <th scope="col">Purchased Id</th>
+                        <th scope="col">Pepper Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total Price</th>
+                        <th scope="col">&nbsp;</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr *ngFor="let item of purchasedPepper; let i=index">
+                        <th scope="row">{{ item.purchasedId }}</th>
+                        <td>{{ getPepperName(item.pepperId) }}</td>
+                        <td>{{ item.pepperOrder }}</td>
+                        <td>{{ item.pepperPrice*item.pepperOrder | currency:'MYR '}}</td>
+                        <td><button mat-raised-button (click)="openDetails(item.purchasedId, item.pepperId, item.userId)" class="btn btn-outline-warning">Details</button></td>
+                    </tr>
+                </tbody>
+    
+            </table>
+
+        </mat-card-content>
+
+        <mat-divider inset></mat-divider>
+
+        <mat-card-footer>
+        </mat-card-footer>
+    </mat-card>
+
+    <mat-card class="edit">
+        <mat-card-title>
+            <div class="title">
+                <p>Edit Information</p>
+            </div>
+        </mat-card-title>
+        <mat-card-subtitle>&nbsp;</mat-card-subtitle>
+
+        <mat-card-content class="content">
+            
+            <form [formGroup]="editUserForm">
+                <mat-form-field appearance="outline" color="warn">
+                    <mat-label>Enter new User Name</mat-label>
+                    <input matInput formControlName='userName'>
+                    <small [class.d-none]="editUserForm.get('userName').valid || editUserForm.get('userName').untouched" 
+                        class="text-danger">User Name is Required</small>
+                </mat-form-field>
+                <br>
+    
+                <mat-form-field appearance="outline" color="warn">
+                    <mat-label>Enter new password</mat-label>
+                    <input matInput [type]="hide1 ? 'password' : 'text'" formControlName='userPassword'>
+                    <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+                      <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <small [class.d-none]="editUserForm.get('userPassword').valid || editUserForm.get('userPassword').untouched" 
+                        class="text-danger">User Password is Required</small>
+                </mat-form-field>
+                <br>
+    
+                <mat-form-field appearance="outline" color="warn">
+                    <mat-label>Confirm new password</mat-label>
+                    <input matInput [type]="hide2 ? 'password' : 'text'" #rePassword [value]="custSession.userPassword">
+                    <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+                      <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+                <br>
+       
+            </form>
+
+        </mat-card-content>
+
+        <mat-divider inset></mat-divider>
+
+        <mat-card-actions>
+                   
+            <br>
+
+            <button mat-raised-button color="primary" class="reward" (click)="onSubmit(rePassword.value)">Update Information</button>
+
+        </mat-card-actions>
+
+        <mat-card-footer>
+        </mat-card-footer>
+    </mat-card>
+
+    <!-- <ng-template #userTable>
+        <div *ngFor="let item of userArray; let i = index">
+            <mat-card class="example-card">
+                <mat-card-title>{{ item.userName }}</mat-card-title>
+                <mat-card-subtitle>Coupon: {{item.coupon}}</mat-card-subtitle>
+
+                <mat-card-content class="content">
+                    <div class="stamp-card" id="stampCard">
+
+                        <div class="title">
+                            <p>Stamp Card</p>
+                        </div>
+                        
+                        <table>
+                            <div *ngIf="item.stampCard > 10; else stampLess10">
+                                <tr *ngFor="let stamp of [].constructor(2)">
+                                    <td *ngFor="let stamp of [].constructor(5)"><i class="fas fa-pepper-hot"></i></td>
+                                </tr>
+                            </div>
+
+                            <ng-template #stampLess10>
+                                <div *ngIf="item.stampCard > 5; else stampLess5">
+                                    <tr>
+                                        <td *ngFor="let stamp of [].constructor(5)"><i class="fas fa-pepper-hot"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td *ngFor="let stamp of [].constructor((item.stampCard)-5)"><i class="fas fa-pepper-hot"></i></td>
+                                    </tr>
+                                </div>
+
+                                <ng-template #stampLess5>
+                                    <tr>
+                                        <td *ngFor="let stamp of [].constructor(item.stampCard)"><i class="fas fa-pepper-hot"></i></td>
+                                    </tr>
+                                </ng-template>
+                            </ng-template>
+                        </table>
+                    </div>
+
+                    <p>{{item.stampCard}}/10</p>
+
+                </mat-card-content>
+
+                <mat-divider inset></mat-divider>
+
+                <mat-card-actions>
+                    <br>
+
+                    <div *ngIf="item.stampCard >= 10; else btnDisable">
+                        <button mat-raised-button color="primary" class="redeem" (click)="redeemCoupon(i)">Redeem Coupon</button>
+                    </div>
+
+                    <ng-template #btnDisable>
+                        <button mat-raised-button color="primary" disabled>Redeem Coupon</button>
+                        <br>
+                    </ng-template>
+                           
+                    <br>
+
+                    <button mat-raised-button color="primary" class="reward" (click)="claimReward(item)">Use Coupon</button>
+
+                </mat-card-actions>
+
+                <mat-card-footer>
+                <mat-progress-bar mode="determinate" [value]="item.stampCard * 10"></mat-progress-bar>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+    </ng-template> -->
+</div>

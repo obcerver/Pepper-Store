@@ -1,0 +1,42 @@
+<img [src]="convertBase64()" class="card-img-top center" alt="...">
+<br><br>
+<br>
+
+<table>
+    <tbody>
+        <tr>
+            <td style="background-color: black;">Purchased ID</td>
+            <td><p>{{data.purchasedId}}</p></td>
+        </tr>
+
+        <tr>
+            <td style="background-color: black;">Buyer Name</td>
+            <td><p>{{user.userName}}</p></td>
+        </tr>
+    
+        <tr>
+            <td style="background-color: black;">Purchased <br> Date & Time</td>
+            <td><p>{{purchased.purchasedDate}}</p></td>
+        </tr>
+    
+        <tr>
+            <td style="background-color: black;">Pepper Name</td>
+            <td><p>{{pepper.pepperName}}</p></td>
+        </tr>
+    
+        <tr>
+            <td style="background-color: black;">Quantity Ordered</td>
+            <td><p>{{purchased.pepperOrder}}</p></td>
+        </tr>
+    
+        <tr>
+            <td style="background-color: black;">Price per Pepper</td>
+            <td><p>{{purchased.pepperPrice | currency:'MYR '}}</p></td>
+        </tr>
+    
+        <tr>
+            <td style="background-color: black;">Total Price</td>
+            <td><p>{{purchased.pepperPrice*purchased.pepperOrder | currency:'MYR '}}</p></td>
+        </tr>
+    </tbody>
+</table>

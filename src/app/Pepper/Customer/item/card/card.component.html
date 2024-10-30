@@ -1,0 +1,157 @@
+<div class="item-bg blocked" *ngIf="pepperArray === null">
+  <h1>Sorry, there is no available pepper</h1>
+</div>
+
+<div class="item-bg blocked" *ngIf="blockedList === true">
+  <h1>Sorry, there is no available pepper</h1>
+</div>
+
+<div *ngIf="pepperArray != null && blockedList === false">
+  <mat-drawer-container class="example-container item-bg">
+    <mat-drawer mode="side" class="item-bg sidenav" opened>
+
+  
+      <form class="d-flex navbar-form" role="search">
+        <input class="form-control me-2" type="search" placeholder="Enter Pepper's name..." aria-label="Search" #searchText>
+        <button (click)="searchPepper(searchText.value)" class="btn btn-warning" type="submit"><i class="bi bi-search"></i></button>
+      </form>
+  
+      <div class="accordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+              Spiciness
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+            <div class="accordion-body">
+              <div *ngFor="let item of uniqSpiciness;">
+                <a (click)="pepperFilter(1, item)">
+                  <ngb-rating [max]="5" [rate]="item" [readonly]="true">
+                    <ng-template let-fill="fill" let-index="index">
+                      <span class="star" [class.filled]="fill === 100" >&#9733;</span>
+                    </ng-template>
+                  </ngb-rating>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+              Manufacturer
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+            <div class="accordion-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngFor="let item of uniqManufacturer; let i = index">
+                  <a (click)="pepperFilter(2,item)">{{item}}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+              Color
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+            <div class="accordion-body">
+              <div class="radio-inline  radio-item">
+                <ul class="list-inline">
+                  <li class="list-inline-item" *ngFor="let item of uniqColour;">
+                    <input id="color" type="radio" name="pepperColour" [class]="item" (click)="pepperFilter(3, item)"/>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button (click)="clearFilter()" type="button" class="btn btn-warning clear">Clear Filter</button>
+    </mat-drawer>
+    <mat-drawer-content>
+      <br>
+      
+      <div class="dropdown">
+        <button class="btn btn-outline-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
+          {{textDrop}}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" (click)="sortDefault();changeText('Default')" type="button">Default</a></li>
+          <li><a class="dropdown-item" (click)="sortABC();changeText('A - Z')" type="button">A - Z</a></li>
+          <li><a class="dropdown-item" (click)="sortCBA();changeText('Z - A')" type="button">Z - A</a></li>
+          <li><a class="dropdown-item" (click)="sortLowHigh();changeText('Price: Low - High')" type="button">Price: Low - High</a></li>
+          <li><a class="dropdown-item" (click)="sortHighLow();changeText('Price: High - Low')" type="button">Price: High - Low</a></li>
+        </ul>
+      </div>
+    <br><br><br>
+    
+    <div class="filterDisp" *ngIf="filterDisp">
+      <h1 style="color: white;">{{filterNum}} items found for "{{filterValue}}"</h1>
+      <h2>Filtered by: {{filterName}}</h2>
+    </div>
+  
+    <ul class="list-inline">
+      <li class="list-inline-item"  *ngFor="let pepperItem of pepperArray; let i = index">
+        <div *ngIf="pepperItem.pepperStatus === true && pepperArray.length > 0">
+          <div class="card border-danger mb-3">
+            <img [src]="convertBase64(i)" class="card-img-top center" alt="...">
+            <div class="card-body ">
+    
+              <div class="Name">
+                <h5 class="card-title">{{pepperItem.pepperName}}</h5>
+              </div>
+    
+              <p class="card-text">{{pepperItem.pepperDesc}}</p>
+    
+              <p class="card-text" style="color: white; font-family: 'Metal Mania', cursive; font-size: 20px;">
+                Price: {{pepperItem.pepperPrice | currency:'MYR '}}
+              </p>
+  
+              <p class="card-text" style="color: white; font-family: 'Metal Mania', cursive; font-size: 20px;">
+                Level :
+                <ngb-rating [max]="5" [rate]="pepperItem.pepperSpiciness" [readonly]="true">
+                  <ng-template let-fill="fill" let-index="index">
+                    <span class="star" [class.filled]="fill === 100" >&#9733;</span>
+                  </ng-template>
+                </ngb-rating>
+              </p>
+    
+              <p class="card-text">Stock: {{pepperItem.pepperQty}}</p>
+    
+              <div *ngIf="pepperItem.pepperQty === 0" class="cartBtn">
+                <button href="#cart" type="button" class="btn btn-warning" disabled>
+                  <i class="bi bi-cart4"></i>&nbsp;Pepper Sold Out
+                </button>
+              </div>
+    
+              <div *ngIf="pepperItem.pepperQty > 0" class="cartBtn">
+                <button  (click)="addToCart(pepperItem);" href="#cart" type="button" class="btn btn-warning">
+                  <i class="bi bi-cart4"></i>&nbsp;Add To Cart
+                </button>
+              </div>
+    
+              <p class="card-text">Currently in Cart: {{pepperItem.pepperOrder}}</p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  
+    <div class="none" *ngIf="pepperArray.length === 0">
+      <h1>Search No Result</h1>
+      <h2>We're sorry. We cannot find any matches for your search term.</h2>
+      <h2><i class="fas fa-search fa-5x"></i></h2>
+    </div>
+  
+    <br><br><br><br><br>
+    </mat-drawer-content>
+    <br><br><br><br><br><br><br><br><br><br>
+  </mat-drawer-container>
+</div>
+

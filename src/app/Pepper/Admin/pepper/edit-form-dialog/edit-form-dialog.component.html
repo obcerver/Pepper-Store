@@ -1,0 +1,157 @@
+<h1>Edit Pepper</h1>
+        <div class="container-form">
+            <form [formGroup]='editForm'>
+
+                <h2>Detail</h2>
+
+                <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+                    <p>New Image</p>
+                    <img [src]="imageURL" [alt]="editForm.value.name">
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="pepperName">ID </label>
+                    <input formControlName='pepperId' type="text" class="form-control" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="pepperName">Name </label>
+                    <input [class.is-invalid]="editForm.get('pepperName').invalid && editForm.get('pepperName').touched" 
+                    formControlName='pepperName' type="text" class="form-control">
+                    <small [class.d-none]="editForm.get('pepperName').valid || editForm.get('pepperName').untouched" 
+                    class="text-danger">Pepper Name is Required</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="pepperPic">Picture </label>
+                    <input type="file" class="form-control" accept="image/*" (change)="selectImg($event)">
+                </div>
+
+                <p>Current Image</p>
+                <img [src]="convertBase64()" class="card-img-top center" alt="...">
+                <br><br>
+
+                <div class="form-group">
+                    <label for="pepperName">Desc </label>
+                    <input [class.is-invalid]="editForm.get('pepperDesc').invalid && editForm.get('pepperDesc').touched" 
+                    formControlName='pepperDesc' type="text" class="form-control">
+                    <small [class.d-none]="editForm.get('pepperDesc').valid || editForm.get('pepperDesc').untouched" 
+                    class="text-danger">Pepper Description is Required</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="pepperName">Model SKU </label>
+                    <input [class.is-invalid]="editForm.get('modelSKU').invalid && editForm.get('modelSKU').touched" 
+                    formControlName='modelSKU' type="text" class="form-control">
+                    <small [class.d-none]="editForm.get('modelSKU').valid || editForm.get('modelSKU').untouched" 
+                    class="text-danger">Model SKU is Required</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="pepperName">Manufacturer </label>
+                    <input [class.is-invalid]="editForm.get('pepperManufacturer').invalid && editForm.get('pepperManufacturer').touched" 
+                    formControlName='pepperManufacturer' type="text" class="form-control" placeholder="Enter Pepper's Manufacturer...">
+                    <small [class.d-none]="editForm.get('pepperManufacturer').valid || editForm.get('pepperManufacturer').untouched" 
+                    class="text-danger">Pepper Manufacturer is Required</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="pepperName">Spiciness </label>
+                    <br>
+                    <ngb-rating [(rate)]="currentRate" [max]="5" formControlName='pepperSpiciness'>
+                        <ng-template let-fill="fill" let-index="index">
+                          <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                        </ng-template>
+                    </ngb-rating>
+                    <pre>Rate: <b>{{currentRate}}</b></pre>
+                </div>
+
+                <div class="form-group">
+                    <label for="pepperName">Status </label><br>
+                    <mat-slide-toggle (change)="statusNow()" formControlName='pepperStatus'>{{status}}</mat-slide-toggle>
+                </div>
+
+                <div class="number">
+
+                    <div class="form-group">
+                        <label for="pepperName">Position</label>
+                        <input [class.is-invalid]="editForm.get('pepperPositions').invalid && editForm.get('pepperPositions').touched" 
+                        formControlName='pepperPositions' type="number" class="form-control">
+                        <div *ngIf="editForm.get('pepperPositions').invalid && editForm.get('pepperPositions').touched">
+                            <small *ngIf="editForm.get('pepperPositions').errors?.required" class="text-danger">Pepper Positions is Required</small>
+                            <small *ngIf="editForm.get('pepperPositions').errors?.max" class="text-danger">Pepper Positions must not exceed total Pepper</small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pepperName">Quantity</label>
+                        <input [class.is-invalid]="editForm.get('pepperQty').invalid && editForm.get('pepperQty').touched" 
+                        formControlName='pepperQty' type="number" class="form-control">
+                        <small [class.d-none]="editForm.get('pepperQty').valid || editForm.get('pepperQty').untouched" 
+                        class="text-danger">Pepper Quantity is Required</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pepperName">Price (RM)</label>
+                        <input [class.is-invalid]="editForm.get('pepperPrice').invalid && editForm.get('pepperPrice').touched" 
+                        formControlName='pepperPrice' type="number" class="form-control">
+                        <small [class.d-none]="editForm.get('pepperPrice').valid || editForm.get('pepperPrice').untouched" 
+                        class="text-danger">Pepper Price is Required</small>
+                    </div>
+
+                    <hr>
+                    <h2>Physical</h2>
+                    
+                    <div class="form-group">
+                        <label for="pepperName">Weight (gram)</label>
+                        <input [class.is-invalid]="editForm.get('pepperWeight').invalid && editForm.get('pepperWeight').touched" 
+                        formControlName='pepperWeight' type="number" class="form-control">
+                        <small [class.d-none]="editForm.get('pepperWeight').valid || editForm.get('pepperWeight').untouched" 
+                        class="text-danger">Pepper Weight is Required</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pepperName">Colour </label>
+                        <div class="radio-inline">
+                            <input id="color" type="radio" name="pepperColour" class="Choco" value="Choco" formControlName='pepperColour'/>
+                            <input id="color" type="radio" name="pepperColour" class="Lime" value="Lime" formControlName='pepperColour'/>
+                            <input id="color" type="radio" name="pepperColour" class="Orange" value="Orange" formControlName='pepperColour'/>
+                            <input id="color" type="radio" name="pepperColour" class="Red" value="Red" formControlName='pepperColour'/>
+                            <input id="color" type="radio" name="pepperColour" class="Yellow" value="Yellow" formControlName='pepperColour'/>
+                        </div>
+                    </div>
+
+                    <p style="font-size: 16px;">Dimension (cm)</p>
+                    <div class="container" style="padding-left: 0%;">
+                        <div class="row">
+                            <div class="form-group col">
+                                <input [class.is-invalid]="editForm.get('pepperLength').invalid && editForm.get('pepperLength').touched" 
+                                formControlName='pepperLength' type="number" class="form-control" placeholder="Length">
+                                <small [class.d-none]="editForm.get('pepperLength').valid || editForm.get('pepperLength').untouched" 
+                                class="text-danger">Pepper Length is Required</small>
+                            </div>
+
+                            <div class="form-group col">
+                                <input [class.is-invalid]="editForm.get('pepperWidth').invalid && editForm.get('pepperWidth').touched" 
+                                formControlName='pepperWidth' type="number" class="form-control" placeholder="Width">
+                                <small [class.d-none]="editForm.get('pepperWidth').valid || editForm.get('pepperWidth').untouched" 
+                                class="text-danger">Pepper Width is Required</small>
+                            </div>
+
+                            <div class="form-group col">
+                                <input [class.is-invalid]="editForm.get('pepperHeight').invalid && editForm.get('pepperHeight').touched" 
+                                formControlName='pepperHeight' type="number" class="form-control" placeholder="Height">
+                                <small [class.d-none]="editForm.get('pepperHeight').valid || editForm.get('pepperHeight').untouched" 
+                                class="text-danger">Pepper Height is Required</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button (click)="formSubmit()" class="btn btn-warning edit" type="submit" [disabled]="editForm.invalid">Update Pepper</button>
+                <button (click)="removePepper()" class="btn btn-warning delete" type="submit">Delete Pepper</button>
+            </form>
+        </div>
+
+        

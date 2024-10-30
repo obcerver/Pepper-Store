@@ -1,0 +1,101 @@
+body{
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(111,111,111,1) 100%);
+    background-size: 100%;
+    height: auto;
+}
+
+.container-form{
+    background-color: white;
+    padding: 30px;
+    height: auto;
+    width: 40em;
+    box-shadow: #f0a24e 0px 22px 70px 4px;
+    border-radius: 15px;
+    margin: auto;
+}
+
+.form-group{
+    padding-bottom: 20px;
+}
+
+td{
+    color: white;
+}
+
+img{
+    width: 200px; 
+    height: 200px; 
+    border-radius: 12px;
+    border: #0E0E0E solid 2px;
+}
+
+button{
+    margin: 10px;
+    font-family: 'Metal Mania', cursive;
+    font-size: 25px;
+    text-align: center;
+
+    transition: background-color 0.5s, color 0.5s;
+}
+
+button:hover {
+    background-color: orange;
+    color: black;
+}
+
+.number{
+    input{
+        width: 170px;
+    }
+
+    input[type='radio']{
+        width: 30px;
+        height: 30px;
+        -webkit-appearance: none;
+        border-radius: 50%;
+        margin: 5px;
+    }
+
+    .Choco{
+        background-color:#32272B;
+    }
+
+    .Lime{
+        background-color: #BFFF00;
+    }
+
+    .Orange{
+        background-color:orange;
+    }
+
+    .Red{
+        background-color: red;
+    }
+
+    .Yellow{
+        background-color:yellow;
+    }
+    
+    input[type='radio']:checked {
+        -webkit-appearance: none;
+        border-radius: 50%;
+        border: gray solid 3px;
+    }
+}
+
+h1{
+    font-family: 'Metal Mania', cursive;
+    font-size: 40px;
+}
+
+.star {
+    font-size: 2rem;
+    color: yellow;
+}
+
+.filled {
+color: orangered;
+}   
+
+

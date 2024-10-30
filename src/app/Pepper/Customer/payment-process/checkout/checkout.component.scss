@@ -1,0 +1,105 @@
+
+.container {
+    width: 100%;
+    height: 100%;
+    float: left;
+  }
+  
+  .row1, .row2{
+    margin-top:50px;
+    width: 50%;
+    float: left;
+    height: 100px;
+  }
+
+  .lead{
+    h3{
+      font-size: 30px;
+      padding-top: 10px;
+      padding-left: 20px;
+      font-family: 'Metal Mania', cursive;
+    }
+  }
+
+  .bottom{
+    h3{
+      font-size: 20px;
+      padding-top: 10px;
+      padding-right: 20px;
+      text-align: right;
+      font-family: 'Metal Mania', cursive;
+    }
+
+    p{
+      font-size: 18px;
+      padding-top: 10px;
+      padding-right: 20px;
+      color: darkgrey;
+      text-align: right;
+      font-family: 'Metal Mania', cursive;
+    }
+  }
+
+.name{
+  p{
+    font-size: 18px;
+    padding-left: 20px;
+  }
+}
+
+table{
+
+  margin-left: auto;
+  margin-right: auto;
+
+  td{
+    width: 90vw;
+  }
+}
+
+.bordering{
+  border-radius: 15px;
+  width: 40vw;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: 0;
+}
+
+.qty {
+  p{
+    padding-left: 20px;
+    padding-top: 0%;
+    font-size: 13px;
+    color: gray;
+  }
+}
+
+.price{
+  p{
+    vertical-align: baseline;
+  }
+}
+
+tr{
+  padding: 10px;
+}
+
+.payment{
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  text-align: center;
+}
+
+.payMethod{
+  p{
+    font-size: 20px;
+    padding-top: 15px;
+    text-align: center;
+  }
+}
+
+.form-check{
+  width: max-content;
+  margin: auto;
+}

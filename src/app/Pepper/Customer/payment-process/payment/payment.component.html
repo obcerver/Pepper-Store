@@ -1,0 +1,44 @@
+<div class="method">
+  <h4>Hey {{custName}}, Select Payment Method</h4>
+</div>
+  
+        <ul class="list-inline">
+          <li class="list-inline-item">
+        
+            <div class="center">
+              <a class ='btn' style="cursor:pointer" (click)="crdr();">
+                <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">Credit/Debit Card</h5>
+                    <span class="card-text">
+                      <i class="bi bi-credit-card"></i>
+                    </span>
+                  </div>
+                </div>
+              </a>
+              
+              <a class ='btn' style="cursor:pointer" (click)="online();">
+                <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">Online Banking</h5>
+                    <span class="card-text">
+                      <i class="bi bi-bank"></i>
+                    </span>
+                  </div>
+                </div>
+              </a>
+
+              <a class ='btn' style="cursor:pointer" (click)="cod();">
+                <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">Cash On Delivery</h5>
+                    <span class="card-text">
+                      <i class="bi bi-cash-coin"></i>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </div>   
+
+          </li>
+        </ul>

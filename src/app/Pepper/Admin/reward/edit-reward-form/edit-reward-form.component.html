@@ -1,0 +1,49 @@
+<h1>Edit Reward</h1>
+<div class="container-form">
+    <form [formGroup]='editRewardForm' (ngSubmit)="onSubmit()">
+
+        <h2>Detail</h2>
+
+        <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+            <p>New Image</p>
+            <img [src]="imageURL" [alt]="editRewardForm.value.name">
+        </div>
+
+        <br>
+
+        <div class="form-group">
+            <label for="rewardName">ID </label>
+            <input formControlName='rewardId' type="text" class="form-control" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="rewardName">Name </label>
+            <input [class.is-invalid]="editRewardForm.get('rewardName').invalid && editRewardForm.get('rewardName').touched" 
+            formControlName='rewardName' type="text" class="form-control">
+            <small [class.d-none]="editRewardForm.get('rewardName').valid || editRewardForm.get('rewardName').untouched" 
+            class="text-danger">Reward Name is Required</small>
+        </div>
+
+        <div class="form-group">
+            <label for="rewardPic">Picture </label>
+            <input type="file" class="form-control" accept="image/*" (change)="selectImg($event)">
+        </div>
+
+        <p>Current Image</p>
+        <img [src]="convertBase64()" class="card-img-top center" alt="...">
+        <br><br>
+
+        <div class="number">
+
+            <div class="form-group">
+                <label for="rewardName">Coupon's Price</label>
+                <input [class.is-invalid]="editRewardForm.get('rewardPrice').invalid && editRewardForm.get('rewardPrice').touched" 
+                formControlName='rewardPrice' type="number" class="form-control">
+                <small [class.d-none]="editRewardForm.get('rewardPrice').valid || editRewardForm.get('rewardPrice').untouched" 
+                class="text-danger">Reward Price is Required</small>
+            </div>
+
+        </div>
+        <button mat-raised-button color="primary" type="submit" [disabled]="editRewardForm.invalid">Update reward</button>
+    </form>
+</div>
